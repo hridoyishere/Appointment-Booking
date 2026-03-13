@@ -1,0 +1,387 @@
+/* BookingModal.css */
+.booking-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+.booking-modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.booking-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: var(--transition);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.booking-modal-close:hover {
+  background: var(--light-bg);
+  color: var(--accent-color);
+}
+
+/* Progress Bar */
+.booking-progress {
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  height: 4px;
+  background: var(--border-color);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.3s ease;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.step.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Doctor Summary */
+.doctor-summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--light-bg);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.doctor-avatar {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doctor-info h3 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 0.2rem;
+}
+
+.doctor-info p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.doctor-fee {
+  font-weight: 600;
+  color: var(--primary-color) !important;
+  margin-top: 0.2rem;
+}
+
+/* Booking Steps */
+.booking-step {
+  margin-bottom: 2rem;
+}
+
+.booking-step h3 {
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.booking-step h4 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin: 1.5rem 0 1rem;
+}
+
+/* Appointment Type Cards */
+.appointment-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.type-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.type-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.type-card.selected {
+  border-color: var(--primary-color);
+  background: rgba(44, 125, 160, 0.05);
+}
+
+.type-card:hover {
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.type-icon {
+  font-size: 1.5rem;
+}
+
+/* Form Elements */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(44, 125, 160, 0.1);
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: var(--accent-color);
+}
+
+.form-group select:disabled {
+  background: var(--light-bg);
+  cursor: not-allowed;
+}
+
+/* Radio Group */
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+  width: auto;
+  cursor: pointer;
+}
+
+/* Confirmation Step */
+.confirmation-details {
+  background: var(--light-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.detail-group {
+  margin-bottom: 1.5rem;
+}
+
+.detail-group h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.detail-group p {
+  margin: 0.5rem 0;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.detail-group strong {
+  color: var(--text-dark);
+  min-width: 120px;
+  display: inline-block;
+}
+
+.fee-breakdown {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.fee-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  color: var(--text-dark);
+}
+
+.fee-row.total {
+  border-top: 2px solid var(--border-color);
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.terms-agreement {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Booking Actions */
+.booking-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.prev-btn,
+.next-btn,
+.confirm-btn {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  flex: 1;
+}
+
+.prev-btn {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.prev-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.next-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.next-btn:hover {
+  background: var(--primary-dark);
+  transform: translateX(5px);
+}
+
+.confirm-btn {
+  background: var(--success-color);
+  color: white;
+}
+
+.confirm-btn:hover {
+  background: #27ae60;
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .booking-modal-content {
+    padding: 1.5rem;
+  }
+  
+  .appointment-type-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .radio-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .booking-actions {
+    flex-direction: column;
+  }
+}

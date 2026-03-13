@@ -1,0 +1,752 @@
+/* UserProfile.css */
+.user-profile-container {
+  max-width: 1200px;
+  margin: 100px auto 2rem;
+  padding: 0 2rem;
+}
+
+/* Header Styles */
+.profile-header {
+  margin-bottom: 2rem;
+}
+
+.profile-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.profile-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Tabs Styles */
+.profile-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 1rem;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: #007bff;
+  background: #f8f9fa;
+}
+
+.tab-btn.active {
+  color: #007bff;
+  background: #e7f1ff;
+}
+
+.message-badge {
+  background: #dc3545;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+/* Profile Tab Styles */
+.profile-card {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.profile-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+}
+
+.edit-profile-btn {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #007bff;
+  background: transparent;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.edit-profile-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.profile-details h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.member-since {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.blood-group {
+  background: #dc3545;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.emergency-contact {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.emergency-contact h3 {
+  color: #856404;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.emergency-details p {
+  margin-bottom: 0.25rem;
+}
+
+/* Bookings Tab Styles */
+.bookings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.bookings-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.new-booking-btn {
+  padding: 0.5rem 1.5rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.new-booking-btn:hover {
+  background: #218838;
+}
+
+.booking-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.booking-doctor-info h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.specialization {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.booking-status {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-badge.completed {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.payment-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.payment-badge.paid {
+  background: #d4edda;
+  color: #155724;
+}
+
+.payment-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.payment-badge.refunded {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.booking-details {
+  margin-bottom: 1rem;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #333;
+  font-weight: 500;
+}
+
+.booking-id {
+  font-family: monospace;
+  background: #f8f9fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.booking-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.action-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.action-btn.view-details {
+  background: #007bff;
+  color: white;
+}
+
+.action-btn.view-details:hover {
+  background: #0056b3;
+}
+
+.action-btn.reschedule {
+  background: #ffc107;
+  color: #212529;
+}
+
+.action-btn.reschedule:hover {
+  background: #e0a800;
+}
+
+.action-btn.cancel {
+  background: #dc3545;
+  color: white;
+}
+
+.action-btn.cancel:hover {
+  background: #c82333;
+}
+
+.action-btn.prescription {
+  background: #28a745;
+  color: white;
+}
+
+.action-btn.prescription:hover {
+  background: #218838;
+}
+
+/* Messages Tab Styles */
+.messages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.messages-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.compose-btn {
+  padding: 0.5rem 1.5rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.compose-btn:hover {
+  background: #0056b3;
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.message-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.message-item:hover {
+  transform: translateX(5px);
+  border-color: #007bff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.message-item.unread {
+  background: #f0f7ff;
+}
+
+.message-avatar {
+  width: 50px;
+  height: 50px;
+  background: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.message-from {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.message-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.message-subject {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.message-preview {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.message-type {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.message-type.appointment {
+  background: #e7f1ff;
+  color: #004085;
+}
+
+.message-type.general {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.message-type.prescription {
+  background: #d4edda;
+  color: #155724;
+}
+
+.message-type.follow-up {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.message-type.billing {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.unread-dot {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 10px;
+  height: 10px;
+  background: #007bff;
+  border-radius: 50%;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-header h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.message-meta {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.message-meta p {
+  margin-bottom: 0.25rem;
+}
+
+.message-body {
+  line-height: 1.6;
+  color: #333;
+}
+
+.message-booking {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: #e7f1ff;
+  border-radius: 4px;
+}
+
+.reply-btn,
+.delete-btn,
+.reschedule-btn,
+.prescription-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.reply-btn,
+.reschedule-btn {
+  background: #007bff;
+  color: white;
+}
+
+.reply-btn:hover,
+.reschedule-btn:hover {
+  background: #0056b3;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}
+
+.booking-detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.booking-detail-section h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.25rem;
+}
+
+.booking-detail-section p {
+  margin-bottom: 0.25rem;
+}
+
+.booking-detail-section.cancellation {
+  background: #f8d7da;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .booking-status {
+    flex-wrap: wrap;
+  }
+
+  .booking-actions {
+    flex-wrap: wrap;
+  }
+
+  .message-item {
+    grid-template-columns: 1fr;
+  }
+
+  .message-avatar {
+    margin-bottom: 0.5rem;
+  }
+
+  .profile-tabs {
+    flex-wrap: wrap;
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-content {
+  animation: slideIn 0.3s ease;
+}
+
+
+/* Add to Profile.css */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.logout-btn-header {
+  padding: 0.5rem 1.5rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.logout-btn-header:hover {
+  background: #c82333;
+}

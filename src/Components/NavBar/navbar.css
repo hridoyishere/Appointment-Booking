@@ -1,0 +1,511 @@
+/* Navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #2C7DA0;      /* Medical blue */
+  --primary-dark: #1A5F7A;
+  --primary-light: #61A5C2;
+  --secondary-color: #2A9D8F;    /* Teal accent */
+  --accent-color: #E76F51;       /* Emergency/warning */
+  --text-dark: #2D3E50;
+  --text-light: #6C757D;
+  --white: #FFFFFF;
+  --light-bg: #F8F9FA;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Navbar Base Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  padding: 1.5rem 2rem;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.navbar-scrolled {
+  background: var(--white);
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Styles */
+.navbar-logo {
+  flex: 0 0 auto;
+}
+
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.logo-highlight {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Desktop Navigation */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0 2rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+/* Right Side Actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.emergency-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  border-radius: 50px;
+  color: var(--accent-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.emergency-btn:hover {
+  background: var(--accent-color);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
+}
+
+.emergency-icon {
+  font-size: 1.1rem;
+  animation: shake 0.5s ease infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+.appointment-btn {
+  padding: 0.6rem 1.5rem;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 50px;
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(44, 125, 160, 0.3);
+}
+
+.appointment-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(44, 125, 160, 0.4);
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggle-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--text-dark);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.mobile-toggle.active .toggle-bar:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-toggle.active .toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-toggle.active .toggle-bar:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.mobile-menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav-menu {
+  list-style: none;
+}
+
+.mobile-nav-item {
+  margin: 1rem 0;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.mobile-nav-link:hover {
+  background: var(--light-bg);
+  color: var(--primary-color);
+  padding-left: 1.2rem;
+}
+
+.mobile-emergency-btn,
+.mobile-appointment-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.mobile-emergency-btn {
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.mobile-appointment-btn {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .nav-menu {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+  }
+  
+  .mobile-menu {
+    display: block;
+  }
+  
+  .emergency-text {
+    display: none;
+  }
+  
+  .emergency-btn {
+    padding: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
+  
+  .appointment-btn {
+    display: none;
+  }
+}
+
+/* Add smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add to your existing Navbar.css */
+
+/* Active link styling */
+.nav-link.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Remove default link styles */
+.nav-link {
+  text-decoration: none;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Page container styles for other pages */
+.page-container {
+  padding: 100px 2rem 4rem;
+  min-height: 60vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-container h1 {
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.page-container p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.emergency-page {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+}
+
+.emergency-page h1 {
+  color: var(--accent-color);
+}
+
+
+/* Add to Navbar.css */
+
+/* User Menu */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 1rem;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  background: rgba(44, 125, 160, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+}
+
+.user-icon {
+  font-size: 1.2rem;
+}
+
+.logout-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid var(--text-light);
+  border-radius: 50px;
+  color: var(--text-light);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.logout-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-right: 1rem;
+}
+
+.login-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.login-icon {
+  font-size: 1.1rem;
+}
+
+/* Mobile Login/Logout Buttons */
+.mobile-login-btn,
+.mobile-logout-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.mobile-login-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.mobile-logout-btn {
+  background: var(--text-light);
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .user-menu {
+    display: none;
+  }
+  
+  .login-btn {
+    display: none;
+  }
+}
