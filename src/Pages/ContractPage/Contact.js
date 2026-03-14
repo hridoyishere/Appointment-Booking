@@ -303,27 +303,27 @@ const ContactPage = () => {
             <div className="social-section">
               <h3>Connect With Us</h3>
               <div className="social-links-grid">
-                <a href="#" className="social-link facebook">
+                <a href="https://example.com" className="social-link facebook">
                   <span className="social-icon">📘</span>
                   <span>Facebook</span>
                 </a>
-                <a href="#" className="social-link twitter">
+                <a href="https://example.com" className="social-link twitter">
                   <span className="social-icon">🐦</span>
                   <span>Twitter</span>
                 </a>
-                <a href="#" className="social-link instagram">
+                <a href="https://example.com" className="social-link instagram">
                   <span className="social-icon">📷</span>
                   <span>Instagram</span>
                 </a>
-                <a href="#" className="social-link linkedin">
+                <a href="https://example.com" className="social-link linkedin">
                   <span className="social-icon">🔗</span>
                   <span>LinkedIn</span>
                 </a>
-                <a href="#" className="social-link youtube">
+                <a href="https://example.com" className="social-link youtube">
                   <span className="social-icon">▶</span>
                   <span>YouTube</span>
                 </a>
-                <a href="#" className="social-link whatsapp">
+                <a href="https://example.com" className="social-link whatsapp">
                   <span className="social-icon">💬</span>
                   <span>WhatsApp</span>
                 </a>

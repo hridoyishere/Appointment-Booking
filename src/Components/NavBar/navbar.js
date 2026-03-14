@@ -11,7 +11,7 @@ const Navbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   
   const location = useLocation();
-  const { user, logout } = useAuth();
+  const { user, } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,10 +35,6 @@ const Navbar = () => {
   const handleLoginSuccess = () => {
     // After successful login, show booking modal
     setShowLoginModal(false);
-  };
-
-  const handleLogout = () => {
-    logout();
   };
 
   return (
