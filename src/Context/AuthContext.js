@@ -3,122 +3,87 @@ import axios from "axios";
 
 const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
+  const API = process.env.REACT_APP_SERVER_URL;
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [bookingloading,setbookingloading]=useState(false)
-  const [successData,setSuccessData]=useState('')
-  const [doctors,setdoctors]=useState([])
+  const [bookingLoading, setBookingLoading] = useState(false);
+  const [successData, setSuccessData] = useState(null);
+  const [doctors, setDoctors] = useState([]);
 
+  // Load user from localStorage
   useEffect(() => {
-    // Check localStorage for existing user session
     const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    if (storedUser) setUser(JSON.parse(storedUser));
     setLoading(false);
   }, []);
 
-const login = async (email, password) => {
-  try {
-
-    const response = await axios.post(
-      "http://localhost:5000/api/users/login",
-      {
-        email,
-        password
+  // Fetch doctors
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const res = await axios.get(`${API}/api/get/doctors`);
+        setDoctors(res.data);
+      } catch (err) {
+        console.error("Fetch doctors failed:", err);
       }
-    );
+    };
+    fetchDoctors();
+  }, [API]);
 
-    const user = response.data.user;
-
-    // save user locally
-    localStorage.setItem("user", JSON.stringify(user));
-
-    return { success: true, user: user };
-
-  } catch (error) {
-
-    console.error("Login error:", error.response?.data?.message);
-    throw error;
-
-  }
-};
-
-  const register = async (userData) => {
-        setLoading(true);
-
-  try {
-
-    const response = await fetch("http://localhost:5000/api/users/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
-
-    const data = await response.json();
-
-
-    if (!response.ok) {
-      throw new Error(data.message);
+  // Login
+  const login = async (email, password) => {
+    try {
+      const res = await axios.post(`${API}/api/users/login`, { email, password });
+      const user = res.data.user;
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
+      return { success: true, user };
+    } catch (err) {
+      console.error("Login error:", err.response?.data?.message || err.message);
+      return { success: false, message: err.response?.data?.message || err.message };
     }
+  };
 
-    // Save user locally
-    localStorage.setItem("user", JSON.stringify(data.user));
-    setUser(data.user);
-    setLoading(false);
+  // Register
+  const register = async (userData) => {
+    setLoading(true);
+    try {
+      const res = await axios.post(`${API}/api/users/register`, userData);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      setUser(res.data.user);
+      setLoading(false);
+      return { success: true, user: res.data.user };
+    } catch (err) {
+      console.error("Register error:", err.response?.data?.message || err.message);
+      setLoading(false);
+      return { success: false, message: err.response?.data?.message || err.message };
+    }
+  };
 
-    return { success: true, user: data };
-
-  } catch (error) {
-    console.error("Register error:", error);
-    setLoading(false);
-    return { success: false, message: error.message };
-  }
-};
-
+  // Logout
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
   };
 
+  // Handle booking & Stripe
   const handleBooking = async (bookingData) => {
-    setSuccessData(bookingData)
-    setbookingloading(true)
-    console.log(bookingData)
+    setSuccessData(bookingData);
+    setBookingLoading(true);
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/create-checkout-session",
-        bookingData
-      );
-      setbookingloading(false)
-      // Redirect to Stripe
-      window.location.href = res.data.url; 
+      const res = await axios.post(`${API}/api/create-checkout-session`, bookingData);
+      setBookingLoading(false);
+      window.location.href = res.data.url; // redirect to Stripe
     } catch (err) {
-      console.error(err);
+      console.error("Booking failed:", err);
+      setBookingLoading(false);
       alert("Payment failed");
     }
-    setbookingloading(false)
   };
-
-
-  const getDoctors = async () => {
-  const res = await axios.get("http://localhost:5000/api/get/doctors");
-  setdoctors(res.data)
-  console.log("users",res.data)
-  return res;
-};
-
-
-useEffect(()=>{
-  getDoctors()
-},[])
 
   const value = {
     user,
@@ -127,9 +92,9 @@ useEffect(()=>{
     register,
     logout,
     handleBooking,
-    bookingloading,
+    bookingLoading,
     successData,
-    doctors
+    doctors,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

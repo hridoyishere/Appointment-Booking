@@ -15,12 +15,16 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(true);
   const [bookings, setBookings] = useState([]);
 
+    
+
+
   const navigate = useNavigate();
 
+  const API = process.env.REACT_APP_SERVER_URL;
   const getUserBookedDoctors = async (userId) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/booking/${userId}`
+        `${API}/api/user/booking/${userId}`
       );
 
       if (response.data.success) {
