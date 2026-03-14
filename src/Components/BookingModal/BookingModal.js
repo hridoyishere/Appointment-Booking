@@ -4,6 +4,7 @@ import { useAuth } from "../../Context/AuthContext";
 
 const BookingModal = ({ isOpen, onClose, doctor }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
+  console.log("1seleced doctor",doctor) //here showing data
 
   useEffect(() => {
     // Check localStorage for existing user session
@@ -17,11 +18,12 @@ const BookingModal = ({ isOpen, onClose, doctor }) => {
     checkUserSession();
   }, []);
 
+
   const { handleBooking } = useAuth();
   const [step, setStep] = useState(1);
   const [bookingData, setBookingData] = useState({
     fee: 10,
-    doctorId: doctor?.id || "",
+    doctorId: doctor?.id || "", //here not showing doctor data
     doctorName: doctor?.name || "",
     appointmentType: "video",
     date: "",
@@ -34,6 +36,20 @@ const BookingModal = ({ isOpen, onClose, doctor }) => {
     emergencyContact: "",
     emergencyPhone: "",
   });
+
+  // 2. Add this useEffect to sync doctor data when the prop changes
+useEffect(() => {
+  if (doctor) {
+    setBookingData((prev) => ({
+      ...prev,
+      doctorId: doctor.id || doctor._id || "",
+      doctorName: doctor.name || "",
+      fee: doctor.fee || 120
+    }));
+  }
+}, [doctor]); 
+
+  console.log("2bookingdata:",bookingData)
 
   const [errors, setErrors] = useState({});
 

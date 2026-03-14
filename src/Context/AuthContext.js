@@ -1,6 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { data } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -13,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [bookingloading,setbookingloading]=useState(false)
   const [successData,setSuccessData]=useState('')
+  const [doctors,setdoctors]=useState([])
 
   useEffect(() => {
     // Check localStorage for existing user session
@@ -23,27 +23,31 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = async (email, password) => {
-    // Simulate API call
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Demo credentials - in real app, this would be an API call
-        if (email === "demo@careconnect.com" && password === "password") {
-          const userData = {
-            id: 1,
-            name: "John Doe",
-            email: email,
-            isLoggedIn: true,
-          };
-          localStorage.setItem("user", JSON.stringify(userData));
-          setUser(userData);
-          resolve({ success: true, user: userData });
-        } else {
-          reject({ success: false, message: "Invalid email or password" });
-        }
-      }, 1000);
-    });
-  };
+const login = async (email, password) => {
+  try {
+
+    const response = await axios.post(
+      "http://localhost:5000/api/users/login",
+      {
+        email,
+        password
+      }
+    );
+
+    const user = response.data.user;
+
+    // save user locally
+    localStorage.setItem("user", JSON.stringify(user));
+
+    return { success: true, user: user };
+
+  } catch (error) {
+
+    console.error("Login error:", error.response?.data?.message);
+    throw error;
+
+  }
+};
 
   const register = async (userData) => {
         setLoading(true);
@@ -104,6 +108,18 @@ export const AuthProvider = ({ children }) => {
   };
 
 
+  const getDoctors = async () => {
+  const res = await axios.get("http://localhost:5000/api/get/doctors");
+  setdoctors(res.data)
+  console.log("users",res.data)
+  return res;
+};
+
+
+useEffect(()=>{
+  getDoctors()
+},[])
+
   const value = {
     user,
     loading,
@@ -113,6 +129,7 @@ export const AuthProvider = ({ children }) => {
     handleBooking,
     bookingloading,
     successData,
+    doctors
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

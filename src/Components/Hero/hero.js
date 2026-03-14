@@ -1,7 +1,10 @@
 // HeroSection.jsx
-import React, { useState,useEffect } from 'react';
+import React, { useState} from 'react';
 import BookingModal from '../BookingModal/BookingModal';
-import LoginModal from '../LoginModal/LoginModal';
+import banner from "./IMG/doctor banner.webp";
+import profile from "./IMG/doctor profile.webp"
+import profile2 from "./IMG/doctorss profile.webp"
+import profile3 from "./IMG/doctorsi.png"
 import './hero.css';
 
 const HeroSection = () => {
@@ -9,20 +12,7 @@ const HeroSection = () => {
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [selectedSpecialist, setSelectedSpecialist] = useState('all');
   const [selectedDoctor, setSelectedDoctor] = useState(null);
-   const [showLoginModal, setShowLoginModal] = useState(false);
 
-
-       useEffect(() => {
-         // Check localStorage for existing user session
-         const checkUserSession = () => {
-           const storedUser = localStorage.getItem("user");
-           if (!storedUser) {
-             setShowLoginModal(true); 
-           }
-         };
-     
-         checkUserSession();
-       }, []);
 
   const specialists = [
     { id: 1, name: 'Cardiology', icon: '❤️', color: '#FF6B6B', count: 24 },
@@ -90,20 +80,13 @@ const HeroSection = () => {
     setShowBookingModal(true)
   }
 
-  const handleLoginSuccess =()=>{}
-
   return (
     <section className="hero-section">
-      {showBookingModal? <LoginModal 
-        isOpen={showLoginModal}
-        onClose={setShowBookingModal}
-        onSuccess={handleLoginSuccess}
-      />:
       <BookingModal
         isOpen={showBookingModal}
         onClose={() => setShowBookingModal(false)}
         doctor={selectedDoctor}
-      />}
+      />
       <div className="hero-container">
         {/* Banner Section */}
         <div className="banner-wrapper">
@@ -151,29 +134,29 @@ const HeroSection = () => {
             <div className="banner-image">
               <div className="image-grid">
                 <div className="grid-item item1">
-                  <img src="/api/placeholder/200/200" alt="Doctor 1" />
+                  <img src={profile} alt="Doctor 1" />
                   <div className="doctor-card-mini">
                     <span className="online-indicator"></span>
                     <span>Dr. Sarah</span>
                   </div>
                 </div>
                 <div className="grid-item item2">
-                  <img src="/api/placeholder/200/200" alt="Doctor 2" />
+                  <img src={banner} alt="Doctor 2" />
                 </div>
                 <div className="grid-item item3">
-                  <img src="/api/placeholder/200/200" alt="Doctor 3" />
+                  <img src={profile2} alt="Doctor 3" />
                 </div>
                 <div className="grid-item item4">
-                  <img src="/api/placeholder/200/200" alt="Doctor 4" />
+                  <img src={profile3} alt="Doctor 4" />
                 </div>
                 <div className="floating-badge badge1">
-                  <span>🏥 24/7</span>
+                  <span>24/7</span>
                 </div>
                 <div className="floating-badge badge2">
                   <span>⭐ 4.9 Rating</span>
                 </div>
                 <div className="floating-badge badge3">
-                  <span>👥 Live Consult</span>
+                  <span>Live Consult</span>
                 </div>
               </div>
             </div>
@@ -230,11 +213,11 @@ const HeroSection = () => {
                   
                   <div className="doctor-details">
                     <span className="detail-item">
-                      <span className="detail-icon">⏳</span>
+                      <span className="detail-icon"></span>
                       {doctor.experience}
                     </span>
                     <span className="detail-item">
-                      <span className="detail-icon">👥</span>
+                      <span className="detail-icon"></span>
                       {doctor.patients}+ patients
                     </span>
                   </div>

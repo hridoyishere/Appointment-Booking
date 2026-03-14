@@ -801,3 +801,237 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+/* FindDoctorPage.css - Add these image styles */
+
+/* Doctor Avatar/Image Styles */
+.doctor-avatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.doctor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.doctor-card:hover .doctor-avatar img {
+  transform: scale(1.05);
+}
+
+/* Grid View Image Container */
+.grid-view .doctor-image-wrapper {
+  height: 200px;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+}
+
+.grid-view .doctor-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--white);
+  box-shadow: var(--shadow-md);
+  background: var(--white);
+}
+
+/* List View Image Container */
+.list-view .doctor-image-wrapper {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  padding: 1rem;
+}
+
+.list-view .doctor-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid var(--white);
+  box-shadow: var(--shadow-md);
+  background: var(--white);
+}
+
+/* Default/Avatar Fallback */
+.doctor-avatar.default {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  color: var(--white);
+  font-size: 3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Image Adjustments */
+@media screen and (max-width: 1024px) {
+  .list-view .doctor-image-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .list-view .doctor-avatar {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-view .doctor-image-wrapper {
+    height: 180px;
+  }
+  
+  .grid-view .doctor-avatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .list-view .doctor-image-wrapper {
+    width: 100%;
+    height: 220px;
+  }
+  
+  .list-view .doctor-avatar {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .grid-view .doctor-image-wrapper {
+    height: 160px;
+  }
+  
+  .grid-view .doctor-avatar {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .list-view .doctor-image-wrapper {
+    height: 200px;
+  }
+  
+  .list-view .doctor-avatar {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* Animation for images */
+@keyframes imageFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.doctor-avatar img {
+  animation: imageFadeIn 0.5s ease;
+}
+
+/* Optional: Add a subtle overlay effect */
+.doctor-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.doctor-card:hover .doctor-image-wrapper::after {
+  opacity: 1;
+}
+
+/* Add a subtle border radius to images in list view */
+.list-view .doctor-image-wrapper {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Ensure images are responsive */
+.doctor-avatar img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optional: Add a fallback background for images that fail to load */
+.doctor-avatar img[src=""] {
+  display: none;
+}
+
+.doctor-avatar img[src=""].fallback,
+.doctor-avatar img:not([src]),
+.doctor-avatar img[src="undefined"] {
+  display: none;
+}
+
+.doctor-avatar:has(img[src=""]),
+.doctor-avatar:has(img:not([src])),
+.doctor-avatar:has(img[src="undefined"]) {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  color: var(--white);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional: Add a subtle shadow to images */
+.doctor-avatar {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Optional: Add a hover effect for images */
+.doctor-card:hover .doctor-avatar img {
+  filter: brightness(1.05);
+}
+
+/* Optional: Add a border radius to images in grid view */
+.grid-view .doctor-image-wrapper {
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+}
+
+/* Optional: Ensure images maintain aspect ratio */
+.doctor-avatar {
+  position: relative;
+  overflow: hidden;
+}
+
+.doctor-avatar img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

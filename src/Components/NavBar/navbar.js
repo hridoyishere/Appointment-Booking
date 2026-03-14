@@ -26,8 +26,8 @@ const Navbar = () => {
   }, [location]);
 
   const navLinks = [
-    { id: 'home', path: '/', label: 'Home', icon: '🏠' },
-    { id: 'find-doctor', path: '/find-doctor', label: 'Find a Doctor', icon: '👨‍⚕️' },
+    { id: 'home', path: '/', label: 'Home', icon: '' },
+    { id: 'find-doctor', path: '/find-doctor', label: 'Find a Doctor', icon: '' },
     { id: 'contact', path: '/contact', label: 'Contact', icon: '📞' },
     { id: 'profile', path: '/profile', label: 'Profile', icon: '👨' },
   ];
@@ -48,7 +48,7 @@ const Navbar = () => {
           {/* Logo Section */}
           <div className="navbar-logo">
             <Link to="/" className="logo-link">
-              <span className="logo-icon">🏥</span>
+              <span className="logo-icon"></span>
               <span className="logo-text">Care<span className="logo-highlight">Connect</span></span>
             </Link>
           </div>
