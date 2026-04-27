@@ -3,9 +3,9 @@
 # Screenshots
 
 <p align="center">
-  <img src="./src/Components/Hero/IMG/view.png" width="230"/>
+  <img src="./src/Components/Hero/IMG/view.png" width="800"/>
 
-  <img src="./src/Components/Hero/IMG/mail.png" width="230"/>
+  <img src="./src/Components/Hero/IMG/mail.png" width="800"/>
   
 </p>
 
