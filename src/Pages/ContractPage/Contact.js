@@ -67,7 +67,7 @@ const ContactPage = () => {
       message: 'Thank you for contacting us! We will get back to you within 24 hours.'
     });
     
-    // Reset form after 3 seconds
+    // Reset form after 3 seconds done 
     setTimeout(() => {
       setFormStatus({
         submitted: false,
